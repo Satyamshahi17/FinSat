@@ -2,22 +2,11 @@ import os
 import chromadb
 from groq import Groq
 from groq import APIStatusError
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import StorageContext, VectorStoreIndex
-from llama_index.embeddings.openai import OpenAIEmbedding
-import streamlit as st
-
-GROQ_API_KEY = (
-    st.secrets["GROQ_API_KEY"]
-    if "GROQ_API_KEY" in st.secrets
-    else os.getenv("GROQ_API_KEY")
-)
-OPENAI_API_KEY = (
-    st.secrets["OPENAI_API_KEY"]
-    if "OPENAI_API_KEY" in st.secrets
-    else os.getenv("OPENAI_API_KEY")
-)
+from llama_index.core.embeddings import resolve_embed_model
+# import streamlit as st
 
 # Reconnect to already stored embeddings (persistent memory).
 def load_index():
@@ -31,17 +20,14 @@ def load_index():
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
     # SAME embedding model used during ingestion
-    embed_model = OpenAIEmbedding(
-        model="text-embedding-3-small",
-        api_key=st.secrets["OPENAI_API_KEY"]
-    )
+    embed_model = resolve_embed_model("local:BAAI/bge-small-en-v1.5")
 
     index = VectorStoreIndex.from_vector_store(
         vector_store=vector_store,
         storage_context=storage_context,
         embed_model=embed_model
     )
-    # # Add this to your script temporarily
+    # Debugging:
     # nodes = list(index.docstore.docs.values())
     # print(f"Total nodes found: {len(nodes)}")
     # for node in nodes[:5]: # Print first 5 nodes to check structure
@@ -79,8 +65,8 @@ Answer:
 
 # use Groq’s hosted Llama-3 model as the generation layer, passing a strictly grounded prompt built from retrieved financial sections. 
 # Low temperature ensures deterministic, audit-safe answers.
-# load_dotenv()
-client = Groq(api_key=GROQ_API_KEY)
+load_dotenv()
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def generate_answer(prompt):
     try:
