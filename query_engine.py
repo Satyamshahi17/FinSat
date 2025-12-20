@@ -28,7 +28,7 @@ def load_index():
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
     # SAME embedding model used during ingestion
-    embed_model = resolve_embed_model("local:BAAI/bge-small-en-v1.5")
+    embed_model = resolve_embed_model("local:BAAI/bge-small-en-v1.5", api_key=st.secrets["HF_API_KEY"])
 
     index = VectorStoreIndex.from_vector_store(
         vector_store=vector_store,
