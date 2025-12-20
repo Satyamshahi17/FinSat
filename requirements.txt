@@ -1,6 +1,7 @@
 streamlit
 llama-index
 llama-index-vector-stores-chroma
+llama-index-embeddings-huggingface
 chromadb
 sentence-transformers
 torch
