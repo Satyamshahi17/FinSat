@@ -5,7 +5,7 @@ from groq import APIStatusError
 # from dotenv import load_dotenv
 from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import StorageContext, VectorStoreIndex
-from llama_index.core.embeddings import resolve_embed_model
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 import streamlit as st
 
 # LLAMA_CLOUD_API_KEY = st.secrets["LLAMA_CLOUD_API_KEY"]
@@ -28,7 +28,7 @@ def load_index():
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
     # SAME embedding model used during ingestion
-    embed_model = resolve_embed_model("local:BAAI/bge-small-en-v1.5", api_key=st.secrets["HF_API_KEY"])
+    embed_model = HuggingFaceEmbedding("local:BAAI/bge-small-en-v1.5", api_key=st.secrets["HF_API_KEY"])
 
     index = VectorStoreIndex.from_vector_store(
         vector_store=vector_store,
