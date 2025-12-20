@@ -1,7 +1,7 @@
 import streamlit as st
 from llama_index.core.node_parser import MarkdownNodeParser
 from llama_index.core import StorageContext, VectorStoreIndex, Document
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.vector_stores.chroma import ChromaVectorStore
 from groq import Groq
 # from dotenv import load_dotenv
@@ -11,6 +11,10 @@ import re
 
 # load_dotenv()
 client = Groq()
+embed_model = OpenAIEmbedding(
+        model="text-embedding-3-small",
+        api_key=st.secrets["OPENAI_API_KEY"]
+    )
 
 # --- CONFIGURATION ---
 INPUT_FILE = "full_report_parsed.md"
@@ -116,9 +120,9 @@ def main():
     vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
-    embed_model = HuggingFaceEmbedding(
-        model_name="BAAI/bge-small-en-v1.5",
-        api_key=st.secrets["HF_API_KEY"]
+    embed_model = OpenAIEmbedding(
+        model="text-embedding-3-small",
+        api_key=st.secrets["OPENAI_API_KEY"]
     )
 
     index = VectorStoreIndex(
