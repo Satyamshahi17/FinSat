@@ -1,10 +1,10 @@
 import os
 import time
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from llama_parse import LlamaParse
 from pypdf import PdfReader, PdfWriter
 
-load_dotenv()
+# load_dotenv()
 
 # --- CONFIGURATION ---
 INPUT_PDF = "report.pdf"  

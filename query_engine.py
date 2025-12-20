@@ -2,10 +2,19 @@ import os
 import chromadb
 from groq import Groq
 from groq import APIStatusError
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import StorageContext, VectorStoreIndex
 from llama_index.core.embeddings import resolve_embed_model
+import streamlit as st
+
+# LLAMA_CLOUD_API_KEY = st.secrets["LLAMA_CLOUD_API_KEY"]
+GROQ_API_KEY = (
+    st.secrets["GROQ_API_KEY"]
+    if "GROQ_API_KEY" in st.secrets
+    else os.getenv("GROQ_API_KEY")
+)
+
 
 # Reconnect to already stored embeddings (persistent memory).
 def load_index():
@@ -64,8 +73,8 @@ Answer:
 
 # use Groq’s hosted Llama-3 model as the generation layer, passing a strictly grounded prompt built from retrieved financial sections. 
 # Low temperature ensures deterministic, audit-safe answers.
-load_dotenv()
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+# load_dotenv()
+client = Groq(api_key=GROQ_API_KEY)
 
 def generate_answer(prompt):
     try:

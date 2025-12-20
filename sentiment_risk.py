@@ -4,13 +4,13 @@ from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core.embeddings import resolve_embed_model
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from groq import Groq
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import torch
 import chromadb
 import os
 import re
 
-load_dotenv()
+# load_dotenv()
 client = Groq()
 
 # --- CONFIGURATION ---

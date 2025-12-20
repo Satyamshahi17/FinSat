@@ -3,12 +3,12 @@ from llama_index.core import StorageContext, VectorStoreIndex, Document
 from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core.embeddings import resolve_embed_model
 from groq import Groq
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import chromadb
 import os
 import re
 
-load_dotenv()
+# load_dotenv()
 client = Groq()
 
 # --- CONFIGURATION ---
