@@ -1,3 +1,4 @@
+import streamlit as st
 from llama_index.core.node_parser import MarkdownNodeParser
 from llama_index.core import StorageContext, VectorStoreIndex, Document
 from llama_index.vector_stores.chroma import ChromaVectorStore
@@ -115,7 +116,7 @@ def main():
     vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
-    embed_model = resolve_embed_model("local:BAAI/bge-small-en-v1.5")
+    embed_model = resolve_embed_model("local:BAAI/bge-small-en-v1.5", api_key=st.secrets["HF_API_KEY"])
 
     index = VectorStoreIndex(
         nodes, 
