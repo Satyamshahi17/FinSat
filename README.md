@@ -98,7 +98,7 @@ FinSat/
 ├── runtime.txt                # Runtime configuration
 ├── .gitignore
 └── .devcontainer/             # Dev container configuration
-
+```
 ## 🛠️ Tech Stack
 
 ### Core Technologies
@@ -175,6 +175,28 @@ pypdf
 - Primary focus is on **system architecture** and **financial analysis**
 - Designed for **educational**, and **personal learning** purposes
 
+## ▶️ How to Run
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/your-username/FinSat.git
+cd FinSat
+
+# Create virtual environment
+python -m venv venv
+
+# Activate on Windows
+venv\Scripts\activate
+
+# Activate on macOS / Linux
+source venv/bin/activate
+
+pip install -r requirements.txt
+
+GROQ_API_KEY=your_groq_api_key
+
+streamlit run app.py
+```
 ## 👤 Author
 
 **Satyam Kumar**  
