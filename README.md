@@ -1,4 +1,5 @@
 # FinSat – Financial Document Analysis Platform
+(Powered by FinBERT and Llama 3.2)
 
 FinSat is a **financial document analysis system** designed to extract, index, analyze, and query structured insights from financial reports (PDFs).  
 The project focuses on **retrieval-augmented generation (RAG)**, **semantic search**, and **risk-aware sentiment analysis** over financial documents.
