@@ -127,34 +127,6 @@ elif mode == "Sentiment & Risk Analysis":
         st.divider()
         st.markdown("### 🧠 Sentiment Highlights")
 
-        # # Display high-confidence negative signals
-        # high_neg = report["risk_summary"].get("high_confidence_negatives", [])
-        # if high_neg:
-        #     st.markdown("#### 🔴 High-Confidence Negative Signals")
-        #     for item in high_neg:
-        #         st.markdown(
-        #             f"""
-        #             - **Category**: {item['category'].upper()}  
-        #               **Confidence**: {item['confidence']:.1%}  
-        #               **Keywords**: {', '.join(item['keywords'])}  
-        #               **Text**: {item['sentence']}
-        #             """
-        #         )
-        
-        # # Display high-confidence positive signals
-        # high_pos = report["risk_summary"].get("high_confidence_positives", [])
-        # if high_pos:
-        #     st.markdown("#### 🟢 High-Confidence Positive Signals")
-        #     for item in high_pos:
-        #         st.markdown(
-        #             f"""
-        #             - **Category**: {item['category'].upper()}  
-        #               **Confidence**: {item['confidence']:.1%}  
-        #               **Keywords**: {', '.join(item['keywords'])}  
-        #               **Text**: {item['sentence']}
-        #             """
-        #         )
-
         # Display detailed category results
         if report.get("category_results"):
             st.divider()
