@@ -178,7 +178,6 @@ pypdf
 
 ## ▶️ How to Run
 
-### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/Satyamshahi17/FinSat.git
 cd FinSat
