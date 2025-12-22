@@ -158,7 +158,7 @@ pypdf
    - Responses are generated strictly from the indexed financial content
 
 6. **FinBERT powered Sentiment & Risk Analysis**
-   - Separate parsing of PDF to provide relevant input for to FinBERT
+   - Separate parsing of PDF to provide input in relevant format to FinBERT
    - Section-wise sentiment highlights are generated for:
      - Liquidity
      - Debt
