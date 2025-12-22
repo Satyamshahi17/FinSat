@@ -116,7 +116,7 @@ FinSat/
 - **NLTK**
 
 ### Document Parsing & Processing
-- **LlamaParse
+- **LlamaParse**
 - **PyPDF**
 
 ---
